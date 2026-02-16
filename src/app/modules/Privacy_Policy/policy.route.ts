@@ -12,20 +12,14 @@ router.patch(
   "/",
   auth(UserRole.ADMIN, UserRole.SUPER_ADMIN),
   validateRequest(privacyPolicyValidation.createPrivacyPolicySchema),
-  PrivacyController.createOrUpdatePolicy
+  PrivacyController.createOrUpdatePolicy,
 );
 
 // get all privacy policy
 router.get(
   "/",
-  auth(
-    UserRole.ADMIN,
-    UserRole.SUPER_ADMIN,
-    UserRole.USER,
-    UserRole.PROPERTY_OWNER,
-    UserRole.SERVICE_PROVIDER
-  ),
-  PrivacyController.getAllPolicy
+  auth(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.USER),
+  PrivacyController.getAllPolicy,
 );
 
 export const privacyPolicyRoute = router;

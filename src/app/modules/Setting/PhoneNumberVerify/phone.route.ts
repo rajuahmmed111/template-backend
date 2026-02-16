@@ -10,8 +10,6 @@ router.post(
   "/send-otp",
   auth(
     UserRole.USER,
-    UserRole.PROPERTY_OWNER,
-    UserRole.SERVICE_PROVIDER,
     UserRole.ADMIN,
     UserRole.SUPER_ADMIN
   ),
@@ -23,8 +21,6 @@ router.post(
   "/verify-otp",
   auth(
     UserRole.USER,
-    UserRole.PROPERTY_OWNER,
-    UserRole.SERVICE_PROVIDER,
     UserRole.ADMIN,
     UserRole.SUPER_ADMIN
   ),

@@ -13,8 +13,6 @@ router.get(
     UserRole.ADMIN,
     UserRole.SUPER_ADMIN,
     UserRole.USER,
-    UserRole.PROPERTY_OWNER,
-    UserRole.SERVICE_PROVIDER
   ),
   TermsController.getTerms
 );

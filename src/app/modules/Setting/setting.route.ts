@@ -13,8 +13,6 @@ router.get(
   auth(
     UserRole.SUPER_ADMIN,
     UserRole.ADMIN,
-    UserRole.PROPERTY_OWNER,
-    UserRole.SERVICE_PROVIDER,
     UserRole.USER
   ),
   SettingController.getAbout
@@ -26,8 +24,6 @@ router.get(
   auth(
     UserRole.SUPER_ADMIN,
     UserRole.ADMIN,
-    UserRole.PROPERTY_OWNER,
-    UserRole.SERVICE_PROVIDER,
     UserRole.USER
   ),
   SettingController.getCustomerContactInfo
