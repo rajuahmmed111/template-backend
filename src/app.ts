@@ -17,9 +17,6 @@ declare global {
 
 const app: Application = express();
 
-// AWS / Reverse Proxy setup
-app.set("trust proxy", true);
-
 export const corsOptions = {
   // origin: [
   //   "http://localhost:5173",
@@ -33,26 +30,34 @@ export const corsOptions = {
   credentials: true,
 };
 
-app.use(
-  bodyParser.json({
-    verify: function (
-      req: express.Request,
-      res: express.Response,
-      buf: Buffer
-    ) {
-      req.rawBody = buf;
-    },
-  })
-);
-
-app.use(bodyParser.json());
+// app.use(
+//   bodyParser.json({
+//     verify: function (
+//       req: express.Request,
+//       res: express.Response,
+//       buf: Buffer,
+//     ) {
+//       req.rawBody = buf;
+//     },
+//   }),
+// );
 
 // Middleware setup
 app.use(cors(corsOptions));
 app.use(cookieParser());
 
-app.use(express.json());
-// app.use(bodyParser.json());
+app.use(
+  bodyParser.json({
+    verify: function (
+      req: express.Request,
+      res: express.Response,
+      buf: Buffer,
+    ) {
+      req.rawBody = buf;
+    },
+  }),
+);
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
